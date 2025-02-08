@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // Set your Laravel API base URL here (or via an environment variable)
-      axiosBaseURL: process.env.API_BASE_URL || 'http://localhost:8000/api'
+      axiosBaseURL: process.env.API_BASE_URL || 'http://ainewsblog.org/public/api'
     }
   },
   

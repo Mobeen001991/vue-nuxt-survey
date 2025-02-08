@@ -3,7 +3,7 @@
     <!-- Top Bar / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">My App</a>
+        <a class="navbar-brand" href="#">Survey App</a>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav" v-if="user">
             <ClientOnly>
