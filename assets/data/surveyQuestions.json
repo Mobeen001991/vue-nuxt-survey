@@ -1,0 +1,25 @@
+{
+    "pages": [
+      {
+        "page": 1,
+        "questions": [
+          { "id": 1, "text": "How satisfied are you with our overall service?" },
+          { "id": 2, "text": "How easy was it to navigate our website or application?" },
+          { "id": 3, "text": "How would you rate the responsiveness of our customer support?" },
+          { "id": 4, "text": "How would you rate the quality of the service you received?" },
+          { "id": 5, "text": "How do you rate the value for money of our service?" }
+        ]
+      },
+      {
+        "page": 2,
+        "questions": [
+          { "id": 6, "text": "How satisfied are you with the quality of our product or service?" },
+          { "id": 7, "text": "How clear and helpful were our communications (emails, notifications, etc.)?" },
+          { "id": 8, "text": "How well did our product/service meet your expectations?" },
+          { "id": 9, "text": "How likely are you to recommend our service to others?" },
+          { "id": 10, "text": "How likely are you to continue using our service in the future?" }
+        ]
+      }
+    ]
+  }
+  
