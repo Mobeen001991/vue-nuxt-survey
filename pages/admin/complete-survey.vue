@@ -29,10 +29,10 @@
   import { ref, onMounted } from 'vue'
   import { useRouter, useNuxtApp } from '#imports'
   
-  // Attach the 'admin' middleware to this page
-    definePageMeta({
-    middleware: 'admin'
-    });
+  // Attach the 'admin','auth' middleware to this page
+  definePageMeta({
+    middleware: ['auth', 'admin']
+  })
 
   // Nuxt router and Axios instance
   const router = useRouter()

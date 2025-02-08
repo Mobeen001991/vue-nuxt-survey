@@ -50,7 +50,7 @@ import { useRouter, useNuxtApp } from '#imports'
 
 // Attach the 'admin' middleware so only admin users can access this page.
 definePageMeta({
-  middleware: 'admin'
+  middleware: ['auth', 'admin']
 })
 
 const users = ref([]) // Holds users data

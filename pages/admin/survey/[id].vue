@@ -8,10 +8,12 @@
   </div>
 </template>
   
-<script setup>;
+<script setup>
 import { useRoute } from '#imports';
 import SurveyForm from '~/components/SurveyForm.vue'
 const route = useRoute()
- 
+definePageMeta({
+  middleware: ['auth', 'admin']
+})
 </script>
    

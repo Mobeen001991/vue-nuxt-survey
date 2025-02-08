@@ -10,7 +10,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { Chart, registerables } from 'chart.js'
-
+definePageMeta({
+  middleware: ['auth']
+})
 // Register all Chart.js components
 Chart.register(...registerables)
 

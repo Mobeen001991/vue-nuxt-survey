@@ -9,7 +9,9 @@
 <script setup>
 import { onMounted } from 'vue'
 const { $axios } = useNuxtApp()
-
+definePageMeta({
+  middleware: 'auth'
+})
 // Check if the survey has already been taken
 function isSurveyTaken() {
   $axios.get('/survey/status')

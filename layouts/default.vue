@@ -8,24 +8,30 @@
           <ul class="navbar-nav" v-if="user">
             <ClientOnly>
               <!-- Show Survey link if the user hasn't taken the survey -->
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <NuxtLink class="nav-link" v-if="user?.has_taken_survey === false && !user?.is_admin" to="/survey">Survey
                 </NuxtLink>
               </li>
 
               <!-- Show Incomplete Survey only for Admins -->
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <NuxtLink class="nav-link" v-if="user?.is_admin" to="/admin/incomplete">Incomplete Survey</NuxtLink>
               </li>
 
+
+              <!-- Show User List for Admins -->
+              <li class="nav-item ">
+                <NuxtLink class="nav-link" v-if="user?.is_admin" to="/admin/users">All Users</NuxtLink>
+              </li>
+
               <!-- Always show Statistics -->
-              <li class="nav-item active">
+              <li class="nav-item ">
                 <NuxtLink class="nav-link" to="/statistics">Statistics</NuxtLink>
               </li>
 
               <!-- Welcome message -->
               <li class="nav-item" v-if="user?.name">
-                <span class="nav-link">Welcome, {{ user.name }}</span>
+                <span  >Welcome, {{ user.name }}</span>
               </li>
             </ClientOnly>
 
@@ -85,7 +91,7 @@ onMounted(() => {
 
 // Logout function
 const logout = () => {
-  localStorage.removeItem('token')
+  localStorage.removeItem('login_token')
   localStorage.removeItem('user')
   user.value = null // Reset user state
   router.push('/login')
@@ -99,7 +105,19 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.navbar-nav li{
+  margin-left: 10px;
+}
 .navbar-nav .nav-link {
   cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  padding: 4px;
+  padding-left: 7px;
+  /* border-radius: 5px; */
+  padding-right: 7px;
+}
+.router-link-active{
+  border-bottom-color: #3480ec !important;
+  color: #3480ec;
 }
 </style>
