@@ -3,35 +3,20 @@
     <!-- Top Bar / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Survey App</a>
+        <NuxtLink to="/">Survey App
+        </NuxtLink>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav" v-if="user">
             <ClientOnly>
-              <!-- Show Survey link if the user hasn't taken the survey -->
-              <li class="nav-item ">
-                <NuxtLink class="nav-link" v-if="user?.has_taken_survey === false && !user?.is_admin" to="/survey">Survey
+              <!-- Nav Items --->
+              <li v-for="item in filteredNavItems" :key="item.route" class="nav-item">
+                <NuxtLink class="nav-link" :to="item.route">
+                  {{ item.label }}
                 </NuxtLink>
               </li>
-
-              <!-- Show Incomplete Survey only for Admins -->
-              <li class="nav-item ">
-                <NuxtLink class="nav-link" v-if="user?.is_admin" to="/admin/incomplete">Incomplete Survey</NuxtLink>
-              </li>
-
-
-              <!-- Show User List for Admins -->
-              <li class="nav-item ">
-                <NuxtLink class="nav-link" v-if="user?.is_admin" to="/admin/users">All Users</NuxtLink>
-              </li>
-
-              <!-- Always show Statistics -->
-              <li class="nav-item ">
-                <NuxtLink class="nav-link" to="/statistics">Statistics</NuxtLink>
-              </li>
-
               <!-- Welcome message -->
               <li class="nav-item" v-if="user?.name">
-                <span  >Welcome, {{ user.name }}</span>
+                <span>Welcome, {{ user.name }}</span>
               </li>
             </ClientOnly>
 
@@ -55,12 +40,23 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
-
+import navItems from '~/assets/data/navItems.json'
 const { $bus } = useNuxtApp() // Use the global event bus
 
 // Reactive user state
 const user = ref(null)
 const router = useRouter()
+// Computed property to filter nav items based on user state
+const filteredNavItems = computed(() => {
+  return navItems.filter((item) => {
+    // If item is admin only, show only if user is admin
+    if (item.is_admin && !(user.value && user.value.is_admin)) {
+      return false;
+    }
+    // If the condition is "always" or not provided, show it
+    return true;
+  })
+})
 // Fetch user from localStorage on mount
 const fetchUser = () => {
   try {
@@ -105,9 +101,10 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.navbar-nav li{
+.navbar-nav li {
   margin-left: 10px;
 }
+
 .navbar-nav .nav-link {
   cursor: pointer;
   border-bottom: 1px solid #ccc;
@@ -116,7 +113,8 @@ onUnmounted(() => {
   /* border-radius: 5px; */
   padding-right: 7px;
 }
-.router-link-active{
+
+.router-link-active {
   border-bottom-color: #3480ec !important;
   color: #3480ec;
 }

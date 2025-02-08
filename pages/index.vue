@@ -1,5 +1,5 @@
 <template>
-  <div class="hello-world">
+  <div  >
     <h1>{{ message }}</h1>
   </div>
 </template>
@@ -7,7 +7,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const message = ref('Hello, World!');
+const message = ref('Welcome');
 </script>
 
 <style scoped>

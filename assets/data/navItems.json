@@ -1,0 +1,23 @@
+[
+    {
+      "label": "Survey",
+      "route": "/survey"
+    },
+    {
+      "label": "Incomplete Survey",
+      "route": "/admin/incomplete",
+      "is_admin": true
+    },
+    {
+      "label": "All Users",
+      "route": "/admin/users", 
+      "is_admin": true
+
+    },
+    {
+      "label": "Statistics",
+      "route": "/statistics"
+
+    }
+  ]
+  
